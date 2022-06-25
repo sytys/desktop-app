@@ -3,6 +3,7 @@
 # Station Desktop Application
 
 ## Table of Contents
+
 - [Installation](#installation)
   - [Requirements](#requirements)
   - [MacOS](#macos)
@@ -28,18 +29,21 @@
 ## Installation
 
 ### Requirements
+
 * node >= `12.4.x`
-* yarn >= `1.7.x`
+- yarn >= `1.7.x`
 
 ```bash
-$ git clone https://github.com/getstation/desktop-app.git
-$ cd browserX
-$ yarn
+git clone https://github.com/getstation/desktop-app.git
+cd browserX
+yarn
 ```
 
 ### MacOS
+
 Run this command from a terminal.
 This will avoid a security prompt at each start related to node-sass hot loader.
+
 ```bash
 # if not already installed, install coreutils
 $ brew install coreutils
@@ -48,29 +52,34 @@ $ dev_utils/firewall_osx.sh
 ```
 
 ### Windows
+
 Install `node-gyp` dependencies
+
 ```bash
-$ npm --add-python-to-path install --global --production windows-build-tools
+npm --add-python-to-path install --global --production windows-build-tools
 ```
 
 ### Ubuntu
+
 ```bash
-$ sudo apt install graphicsmagick icnsutils libxtst-dev libx11-dev libxrender-dev libxkbfile-dev libgconf-2-4
+sudo apt install graphicsmagick icnsutils libxtst-dev libx11-dev libxrender-dev libxkbfile-dev libgconf-2-4
 ```
 
 ### CentOS or Amazon Linux 2
+
 ```bash
-$ sudo yum install libX11-devel libXt-devel libXtst-devel xorg-x11-xkb-utils-devel libxkbcommon-x11-devel libxkbcommon-devel
+sudo yum install libX11-devel libXt-devel libXtst-devel xorg-x11-xkb-utils-devel libxkbcommon-x11-devel libxkbcommon-devel
 ```
 
 > See [dotenv](#dotenv) for further configuration.
 
 ## Run
+
 ```bash
 yarn run dev
 ```
 
-### Natives modules errors 
+### Natives modules errors
 
 If for any reason you have some error with binding module you could run `npm run rebuild-all-native` to check if you still have the problem
 
@@ -85,20 +94,24 @@ If for any reason you have some error with binding module you could run `npm run
 *See [electron-debug](https://github.com/sindresorhus/electron-debug) for more information.*
 
 ### Library DevTools
+
 - [React DevTools](https://github.com/facebook/react-devtools) is available in Chrome DevTools
 - [Apollo Client DevTools](https://github.com/apollographql/apollo-client-devtools) is available in Chrome DevTools
 - [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension) see below
 
 #### Redux Devtools
+
 In order to see redux transactions and state,
-install [Redux DevTools](https://github.com/gaearon/redux-devtools) 
+install [Redux DevTools](https://github.com/gaearon/redux-devtools)
 (or the [browser extension](https://github.com/zalmoxisus/redux-devtools-extension))
 and click on `Open Remote DevTools`. Make sure `Use (custom) local server` on `localhost:8000` is activated in the settings.
 
 ### Main proces debugging
+
 To inspect the main process, connect Chrome by visiting `chrome://inspect` and selecting to inspect the launched Electron app.
 
 ## Useful env variables for dev
+
 - `STATION_NO_WEBVIEWS` if exists, webviews are not loaded
 - `STATION_REDUX_LOGGER` if exists, will enable redux-logger in renderer
 - `STATION_AUTOUPDATER_MOCK_SCENARIO` set the scenario for the mock of `AutoUpdater` module:
@@ -121,6 +134,7 @@ To inspect the main process, connect Chrome by visiting `chrome://inspect` and s
 Databases migrations are using [umzug](https://github.com/sequelize/umzug) and [umzug-cli](https://github.com/marcbachmann/umzug-cli).
 
 To test migrations manually:
+
 ```bash
 // Apply migrations
 $ yarn run database migrations up
@@ -129,6 +143,7 @@ $ yarn run database migrations down
 ```
 
 ### Inspect DB
+
 Install [TablePlus](https://tableplus.io/) and create a new SQLite connection with the database file located at `~/Library/Application\ Support/Station\ Dev/db/station.db`
 
 ## Manual Packaging
@@ -136,10 +151,11 @@ Install [TablePlus](https://tableplus.io/) and create a new SQLite connection wi
 To package apps for the local platform:
 
 ```bash
-$ yarn run build
+yarn run build
 ```
 
 #### Code signing
+
 The application will be automatically signed by the CI on the `release` branch
 
 ## Development tools
@@ -153,7 +169,9 @@ Here is a list of tools used during the development process. Consider adding the
 WebStorm and VSCode should be correctly configured by default.
 
 ## Workspace management (TODO)
+
 This repository should be used as a proper monorepo. Packages that should be impacted:
+
 - appstore (already in this repo but not handled by any monorepo tool yet)
 - @getstation/sdk
 - @getstation/theme
@@ -169,6 +187,7 @@ This repository should be used as a proper monorepo. Packages that should be imp
 Note: you can remove artifacts and push changes over the same draft
 
 ## Documentations
+
 - [Services](app/services/README.md)
 - [Score Engine](app/lib/score-engine/README.md)
 - [Bang Lifecyle](app/bang/README.md)
